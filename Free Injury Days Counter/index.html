@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Working Without Injury</title>
+    <link rel="icon" href="icon.png" type="image/x-icon">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #fff8dc, #ffffff);
+            font-family: Arial, sans-serif;
+            color: black;
+            text-align: center;
+            padding: 50px;
+            position: relative;
+        }
+        #logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px; /* Adjusted size to medium */
+        }
+        #result {
+            font-size: 2em;
+            color: black;
+            font-weight: bold;
+        }
+        #days {
+            font-size: 3em;
+            color: #ff6666; /* Soft red color */
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: black;
+        }
+        label, input {
+            font-size: 1.2em;
+            margin: 10px;
+            color: black;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="icon.png" alt="Company Logo">
+    <h1>Days Working Without Injury</h1>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" disabled value="2023-01-01">
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" disabled>
+    <p id="result"></p>
+
+    <script>
+        // Set the end date to today's date
+        document.getElementById('endDate').valueAsDate = new Date();
+
+        function calculateTime() {
+            const startDate = new Date('2023-01-01T00:00:00');
+            const now = new Date();
+            const timeDifference = now - startDate;
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('result').innerHTML = `We have worked <span id="days">${days}</span> days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds without injuries!`;
+        }
+
+        // Update the time every second
+        setInterval(calculateTime, 1000);
+
+        // Calculate time immediately when the page loads
+        window.onload = calculateTime;
+    </script>
+</body>
+</html>

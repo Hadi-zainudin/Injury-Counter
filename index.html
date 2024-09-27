@@ -8,6 +8,7 @@
     <style>
         body {
             background: linear-gradient(to bottom, #fff8dc, #ffffff);
+            background-attachment: fixed;
             font-family: Arial, sans-serif;
             color: black;
             text-align: center;
@@ -16,8 +17,8 @@
         }
         #logo {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 5px;
+            left: 5px;
             width: 100px; /* Adjusted size to medium */
         }
         #result {
@@ -28,6 +29,11 @@
         #days {
             font-size: 3em;
             color: #ff6666; /* Soft red color */
+            font-weight: bold;
+        }
+        #seconds {
+            font-size: 1em;
+            text-decoration:underline;
             font-weight: bold;
         }
         h1 {
@@ -78,7 +84,7 @@
             const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-            document.getElementById('result').innerHTML = `We have worked <span id="days">${days}</span> days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds without injuries!`;
+            document.getElementById('result').innerHTML = `We have worked <span id="days">${days}</span> days, ${hours} hours, ${minutes} minutes, and <span id="seconds">${seconds}</span> seconds without injuries!`;
         }
 
         // Update the time every second
